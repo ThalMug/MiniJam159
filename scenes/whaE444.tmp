@@ -1,0 +1,135 @@
+[gd_scene load_steps=20 format=3 uid="uid://def4w7wnxsj1n"]
+
+[ext_resource type="Script" path="res://src/Player/Whale.gd" id="1_80yyd"]
+[ext_resource type="Texture2D" uid="uid://c8ewlp5nbqwba" path="res://assets/Whale.png" id="2_wi3b2"]
+[ext_resource type="Texture2D" uid="uid://ceetkwi5kk8r2" path="res://assets/Whale_mouth_opened.png" id="3_wbbp7"]
+[ext_resource type="Script" path="res://src/Player/AnimationWhale.gd" id="4_h1d5v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kpx4"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5q2s"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(256, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apii7"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(0, 160, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hsxg"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(256, 160, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rei7c"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epbng"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(256, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7c8w"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(0, 160, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4nrb"]
+atlas = ExtResource("2_wi3b2")
+region = Rect2(256, 160, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r6dy"]
+atlas = ExtResource("3_wbbp7")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhvtu"]
+atlas = ExtResource("3_wbbp7")
+region = Rect2(256, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsld7"]
+atlas = ExtResource("3_wbbp7")
+region = Rect2(0, 160, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71gjs"]
+atlas = ExtResource("3_wbbp7")
+region = Rect2(256, 160, 256, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iexvd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kpx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5q2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apii7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hsxg")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rei7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epbng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7c8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4nrb")
+}],
+"loop": true,
+"name": &"idle_whale",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r6dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhvtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsld7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71gjs")
+}],
+"loop": true,
+"name": &"open_mouth",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3iblj"]
+size = Vector2(225, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbanv"]
+size = Vector2(226, 136)
+
+[node name="Whale" type="CharacterBody2D"]
+script = ExtResource("1_80yyd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iexvd")
+animation = &"open_mouth"
+autoplay = "idle_whale"
+frame_progress = 0.303452
+script = ExtResource("4_h1d5v")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 3.5)
+shape = SubResource("RectangleShape2D_3iblj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_jbanv")

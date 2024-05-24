@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://def4w7wnxsj1n"]
+
+[ext_resource type="Script" path="res://src/Player/Whale.gd" id="1_80yyd"]
+[ext_resource type="Texture2D" uid="uid://q2nfwpfcs6n4" path="res://icon.svg" id="2_ftgnr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iexvd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ftgnr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3iblj"]
+size = Vector2(131, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbanv"]
+size = Vector2(131, 130)
+
+[node name="Whale" type="CharacterBody2D"]
+script = ExtResource("1_80yyd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iexvd")
+frame_progress = 0.992205
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3iblj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_jbanv")
